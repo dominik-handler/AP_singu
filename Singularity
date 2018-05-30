@@ -26,8 +26,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
   R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'devtools::install_github("tidyverse/ggplot2") '
   R --slave -e 'install.packages(c( "tidyverse", "plotly"), repos = "http://cran.wu.ac.at/") '
-  R --slave -e 'source("http://bioconductor.org/biocLite.R");  biocLite("remotes"); biocLite("COMBINE-lab/wasabi")'
   R --slave -e 'devtools::install_github("pachterlab/sleuth@v0.29.0") '
+  R --slave -e 'source("http://bioconductor.org/biocLite.R");  biocLite("remotes"); biocLite("COMBINE-lab/wasabi")'
 
   mkdir /groups
   mkdir /scratch
