@@ -12,6 +12,16 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
   apt-get update
   apt-get -y install build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev
 
+  apt-get clean && apt-get update && apt-get install -y \
+      locales \
+      language-pack-fi  \
+      language-pack-en && \
+      export LANGUAGE=en_US.UTF-8 && \
+      export LANG=en_US.UTF-8 && \
+      export LC_ALL=en_US.UTF-8 && \
+      locale-gen en_US.UTF-8 && \
+      dpkg-reconfigure locales
+
   mkdir /R/
   cd /R/
   wget https://cran.r-project.org/src/base/R-latest.tar.gz
@@ -28,7 +38,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
   R --slave -e 'install.packages(c( "tidyverse", "plotly", "cowplot", "Cairo"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.29.0")'
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("COMBINE-lab/wasabi")'
-
+  
   mkdir /groups
   mkdir /scratch
   mkdir /scratch-ii2
