@@ -38,7 +38,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
   apt-get update
   R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo"), repos = "http://cran.wu.ac.at/") '
-  R --slave -e 'devtools::install_github("tidyverse/ggplot2") '
+  R --slave -e 'options(unzip = "internal"); devtools::install_github("tidyverse/ggplot2") '
   R --slave -e 'install.packages(c( "cowplot" ), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.29.0")'
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("COMBINE-lab/wasabi")'
