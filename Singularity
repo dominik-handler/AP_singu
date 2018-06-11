@@ -10,7 +10,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %post
 
   apt-get update
-  apt-get -y install build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth libcairo2-dev libxt-dev
+  apt-get -y install build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth libcairo2-dev libxt-dev pandoc
 
   apt-get clean && apt-get update && apt-get install -y \
       locales \
@@ -34,8 +34,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
   apt-get update
   R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
+  R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'devtools::install_github("tidyverse/ggplot2") '
-  R --slave -e 'install.packages(c( "tidyverse", "plotly", "cowplot", "Cairo"), repos = "http://cran.wu.ac.at/") '
+  R --slave -e 'install.packages(c( "cowplot" ), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.29.0")'
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("COMBINE-lab/wasabi")'
   
