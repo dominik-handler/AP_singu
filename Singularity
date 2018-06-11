@@ -10,8 +10,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %post
 
   apt-get update
-  apt-get -y install build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth libcairo2-dev libxt-dev pandoc
-
+  apt-get -y install software-properties-common build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth libcairo2-dev libxt-dev
+  add-apt-repository universe
+  apt-get update
+  apt-get -y install pandoc
+  
   apt-get clean && apt-get update && apt-get install -y \
       locales \
       language-pack-fi  \
