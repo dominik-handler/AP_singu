@@ -1,41 +1,45 @@
 #R in singularity
+Bootstrap: docker
+From: ubuntu:16.04
 
-BootStrap: debootstrap
-OSVersion: xenial
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+%environment
+  R_VERSION=3.4.3
+  export R_VERSION
+  R_CONFIG_DIR=/etc/R/
+  export R_CONFIG_DIR
 
 %runscript
   "$@"
 
 %post
 
-  apt-get update
-  apt-get -y install software-properties-common build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth libcairo2-dev libxt-dev
-  add-apt-repository universe
-  apt-get update
-  apt-get -y install pandoc
-  
-  apt-get clean && apt-get update && apt-get install -y \
-      locales \
-      language-pack-fi  \
-      language-pack-en && \
-      export LANGUAGE=en_US.UTF-8 && \
-      export LANG=en_US.UTF-8 && \
-      export LC_ALL=en_US.UTF-8 && \
-      locale-gen en_US.UTF-8 && \
-      dpkg-reconfigure locales
+%post
+  NPROCS=`awk '/^processor/ {s+=1}; END{print s}' /proc/cpuinfo`
+  apt-get update --fix-missing
+  apt-get install -y wget
+  cd $HOME
+  wget https://cran.rstudio.com/src/base/R-3/R-3.4.3.tar.gz
+  tar xvf R-3.4.3.tar.gz
+  cd R-3.4.3
 
-  mkdir /R/
-  cd /R/
-  wget https://cran.r-project.org/src/base/R-latest.tar.gz
-  tar zxf R-latest.tar.gz
-  rm -rf R-latest.tar.gz
-  cd R-*
-  ./configure --enable-R-shlib --with-x=no
-  make
+  apt-get update
+  apt-get install -y libblas3 libblas-dev liblapack-dev liblapack3 curl 
+  apt-get install -y libgmp10 libgmp-dev
+  apt-get install -y gcc fort77 aptitude
+  aptitude install -y g++
+  aptitude install -y xorg-dev
+  aptitude install -y libreadline-dev
+  aptitude install -y gfortran
+  gfortran --version
+  apt install -y libssl-dev libxml2-dev libpcre3-dev liblzma-dev libbz2-dev libcurl4-openssl-dev
+
+
+  ./configure --enable-R-static-lib --with-blas --with-lapack --enable-R-shlib=yes
+  echo "Will use make with $NPROCS cores."
+  make -j${NPROCS}
   make install
+  R --version
 
-  apt-get update
   R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'options(unzip = "internal"); devtools::install_github("tidyverse/ggplot2") '
