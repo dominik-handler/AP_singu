@@ -10,7 +10,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %post
 
   apt-get update
-  apt-get -y install software-properties-common build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth xorg openbox libcairo2-dev libxt-dev 
+  apt-get -y install software-properties-common build-essential wget git binutils binutils-dev cmake gcc g++ gfortran bzip2  xz-utils liblzma-dev make libcurl4-openssl-dev libreadline-dev libpcre3-dev libbz2-dev zlib1g-dev libssl-dev libxml2-dev xauth xorg libcairo2-dev libxt-dev 
   add-apt-repository universe
   apt-get update
   apt-get -y install pandoc
