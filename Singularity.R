@@ -8,7 +8,7 @@ From: ubuntu:16.04
 %post
 
   apt-get update
-  apt-get -y install wget git sudo curl libssl-dev 
+  apt-get -y install wget git sudo curl libssl-dev libxml2-dev
   
   apt-get clean && apt-get update && apt-get install -y \
       locales \
