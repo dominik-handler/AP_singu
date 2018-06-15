@@ -8,7 +8,10 @@ From: ubuntu:16.04
 %post
 
   apt-get update
-  apt-get -y install wget git sudo curl libssl-dev libxml2-dev
+  apt-get -y install wget git sudo curl libssl-dev libxml2-dev software-properties-common
+  add-apt-repository universe
+  apt-get update
+  apt-get -y install pandoc
   
   apt-get clean && apt-get update && apt-get install -y \
       locales \
@@ -38,7 +41,7 @@ From: ubuntu:16.04
 
   #install R-packages  
   R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
-  R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo"), repos = "http://cran.wu.ac.at/") '
+  R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo", "gridextra"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'options(unzip = "internal"); devtools::install_github("tidyverse/ggplot2") '
   R --slave -e 'install.packages(c( "cowplot" ), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.30.0")'
