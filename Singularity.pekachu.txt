@@ -5,6 +5,7 @@ OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %runscript
+    source activate pekachu
     pekachu "$@"
 
 %post
@@ -26,7 +27,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     conda config --add channels conda-forge
     conda config --add channels bioconda
     
-    conda create -n peakachu peakachu python=3
+    conda create --yes -n peakachu peakachu python=3
     
     conda clean --all
 
