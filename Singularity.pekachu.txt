@@ -5,7 +5,7 @@ OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %runscript
-    cutadapt "$@"
+    pekachu "$@"
 
 %post
     apt-get -y install wget
@@ -26,7 +26,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     conda config --add channels conda-forge
     conda config --add channels bioconda
     
-    conda install -c bioconda pekachu
+    conda install pekachu
     
     conda clean --all
 
