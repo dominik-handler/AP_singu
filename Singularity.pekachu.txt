@@ -26,7 +26,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     conda config --add channels conda-forge
     conda config --add channels bioconda
     
-    conda install pekachu
+    conda create -n peakachu peakachu python=3
     
     conda clean --all
 
