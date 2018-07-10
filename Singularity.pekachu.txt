@@ -39,12 +39,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /scratch-ii2
      mkdir /clustertmp
 
-%environment
-    PATH="PATH=/Software/anaconda3/bin:${PATH}"
-    export $PATH
-
-%test
-    PATH="PATH=/Software/anaconda3/bin:${PATH}"
-    export $PATH
-    cutadapt --version
     
