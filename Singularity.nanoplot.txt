@@ -1,0 +1,30 @@
+#nanoplot in singularity
+
+BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%runscript
+    NanoPlot "$@"
+
+%post
+    apt-get -y install wget
+    apt-get -y install sudo
+
+    apt-get update
+    apt-get -y install python3.5
+
+    apt-get -y install python3-setuptools
+    easy_install3 pip
+
+    mkdir -p /NanoTools/
+    cd /NanoTools/
+    pip install NanoPlot
+    
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%test
+    NanoPlot -h
+    
