@@ -15,11 +15,18 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get -y install python3.5
 
     apt-get -y install python3-setuptools
-    easy_install3 pip
+    
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p /Software/anaconda3 && \
+    rm Miniconda3-latest-Linux-x86_64.sh
+ 
+    conda install -c bioconda nanoplot
+    
+   # easy_install3 pip
 
-    mkdir -p /NanoTools/
-    cd /NanoTools/
-    pip install NanoPlot
+   # mkdir -p /NanoTools/
+   # cd /NanoTools/
+   # pip install NanoPlot
     
     mkdir /groups
     mkdir /scratch
@@ -28,3 +35,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %test
     NanoPlot -h
     
+
+
