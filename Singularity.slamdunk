@@ -1,7 +1,7 @@
 #slamdunk in singularity
 
 Bootstrap: docker
-From: r/tobneu/slamdunk/:latest
+From: tobneu/slamdunk
 
 %runscript
     slamdunk "$@"
