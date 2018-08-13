@@ -7,17 +7,12 @@ From: tobneu/slamdunk
     slamdunk "$@"
 
 %post
-
-    
+  
     mkdir /groups
     mkdir /scratch
     mkdir /scratch-ii2
 
-
-
-
 %test
-
     slamdunk -h
     
 
