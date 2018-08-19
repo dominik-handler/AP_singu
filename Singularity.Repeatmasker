@@ -1,0 +1,57 @@
+#repeatmasker in singularity
+
+BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%runscript
+  /RepeatMasker/RepeatMasker "$@"
+
+%post
+    apt-get --assume-yes install wget
+    apt-get --assume-yes install sudo
+
+    sudo apt-get update
+    sudo apt-get install make
+        
+    sudo apt-get install build-essential software-properties-common -y
+    sudo apt-get install gcc      
+    
+    sudo apt-get --assume-yes install perl  
+    cpan install Text::Soundex  
+    locale-gen "en_US.UTF-8"
+    #dpkg-reconfigure locales
+
+
+    wget http://eddylab.org/software/hmmer3/3.1b2/hmmer-3.1b2-linux-intel-x86_64.tar.gz
+    tar zxf hmmer-3.1b2-linux-intel-x86_64.tar.gz
+    sudo mv hmmer-3.1b2-linux-intel-x86_64 /hmmer-3.1b2
+    cd /hmmer-3.1b2
+    ./configure
+    make
+    make check
+    PATH=/hmmer-3.1b2/src/:${PATH}
+    
+    rm -rf hmmer-3.1b2-linux-intel-x86_64.tar.gz
+    
+    mkdir /trf
+    cd /trf 
+    wget http://brenneckelab.imba.oeaw.ac.at/tmp/dominik_XA12B/trf409.linux64   
+    mv /trf/trf409.linux64 /trf/trf 
+    chmod 777 /trf/trf
+    PATH=/trf/:${PATH}
+    
+    mkdir /RepeatMasker
+    cd /    
+    wget http://www.repeatmasker.org/RepeatMasker-open-4-0-7.tar.gz
+    gunzip RepeatMasker-open-4-0-7.tar.gz    
+    tar xvf RepeatMasker-open-4-0-7.tar     
+    
+    #cd RepeatMasker
+    #perl ./configure 
+    
+    sudo mkdir /groups
+    sudo mkdir /clustertmp
+
+%test
+  /RepeatMasker/RepeatMasker -h
