@@ -19,7 +19,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
      apt-get -y install gnuplot gnuplot-x11 gnuplot-doc 
      apt-get update
-     apt-get -y install xfig transfig xfig-libs libgsl0ldbl libgsl-dev
+     apt-get -y install xfig transfig xfig-libs libgsl-dev
            
      cd /
      git clone https://github.com/marbl/MashMap.git
