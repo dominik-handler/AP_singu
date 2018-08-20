@@ -1,0 +1,38 @@
+#graphmap in singularity
+
+BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%runscript
+    mashmap "$@"
+
+%post
+    apt-get --assume-yes install wget
+    apt-get --assume-yes install 
+
+     apt-get update
+      
+     apt-get -y install software-properties-common build-essential zlib1g-dev git
+     add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+     apt-get update
+    
+     apt-get -y install gnuplot gnuplot-x11 gnuplot-doc 
+     apt-get -y install xfig transfig xfig-libs
+           
+     cd /
+     git clone https://github.com/marbl/MashMap.git
+
+     cd MashMap
+     ./bootstrap.sh
+     ./configure
+     make
+     
+     mkdir /groups
+     mkdir /scratch
+     mkdir /scratch-ii2
+     mkdir /clustertmp
+
+%test
+  gnuplot --version
+  mashmap -h
