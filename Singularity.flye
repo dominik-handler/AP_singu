@@ -29,13 +29,13 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mkdir /scratch-ii2
 
 %environment
-    PATH="/Software/anaconda3/bin:${PATH}"
+    PATH="PATH=/Software/anaconda3/bin:${PATH}"
     export $PATH
 
 
 
 %test
-    PATH="/Software/anaconda3/bin:${PATH}"
+    PATH="PATH=/Software/anaconda3/bin:${PATH}"
     export $PATH
     flye -h
     
