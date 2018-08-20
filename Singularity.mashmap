@@ -24,16 +24,28 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      cd /
      git clone https://github.com/marbl/MashMap.git
 
+     mkdir -p /mashmap
+     
+     
      cd MashMap
      ./bootstrap.sh
-     ./configure
+     ./configure --prefix=/mashmap/
      make
+     
+     cd 
+     rm -rf /MashMap
      
      mkdir /groups
      mkdir /scratch
      mkdir /scratch-ii2
      mkdir /clustertmp
 
+%environment
+    PATH="/mashmap/bin/:${PATH}"
+    export $PATH
+
+
 %test
-  gnuplot --version
+  PATH="/mashmap/bin/:${PATH}"
+  export $PATH
   mashmap -h
