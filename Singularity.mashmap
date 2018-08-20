@@ -48,4 +48,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %test
   PATH="PATH=/mashmap/bin/:${PATH}"
   export $PATH
-  mashmap -h
+  #mashmap -h
