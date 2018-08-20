@@ -41,11 +41,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /clustertmp
 
 %environment
-    PATH="/mashmap/bin/:${PATH}"
+    PATH="PATH=/mashmap/bin/:${PATH}"
     export $PATH
 
 
 %test
-  PATH="/mashmap/bin/:${PATH}"
+  PATH="PATH=/mashmap/bin/:${PATH}"
   export $PATH
   mashmap -h
