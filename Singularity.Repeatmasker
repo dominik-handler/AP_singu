@@ -47,7 +47,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     tar xvf RepeatMasker-open-4-0-7.tar     
     
     cd RepeatMasker
-    perl ./configure 
+    wget https://github.com/dominik-handler/AP_singu/blob/master/utilities/RepeatMaskerConfig.pm
+    #perl ./configure 
     
      mkdir /groups
      mkdir /clustertmp
