@@ -5,7 +5,7 @@ OSVersion: xenial
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %runscript
-  /RepeatMasker/RepeatMasker "$@"
+  perl /RepeatMasker/RepeatMasker "$@"
 
 %post
     apt-get --assume-yes install wget
@@ -56,4 +56,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /scratch-ii2
 
 %test
-  /RepeatMasker/RepeatMasker -h
+  perl /RepeatMasker/RepeatMasker -h
