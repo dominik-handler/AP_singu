@@ -56,4 +56,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /scratch-ii2
 
 %test
-  perl /RepeatMasker/RepeatMasker -h
+  #perl /RepeatMasker/RepeatMasker -h
