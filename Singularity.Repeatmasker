@@ -47,7 +47,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     tar xvf RepeatMasker-open-4-0-7.tar     
     
     cd RepeatMasker
-    wget https://github.com/dominik-handler/AP_singu/blob/master/utilities/RepeatMaskerConfig.pm
+    wget https://raw.githubusercontent.com/dominik-handler/AP_singu/master/utilities/RepeatMaskerConfig.pm
     #perl ./configure 
     
      mkdir /groups
@@ -56,4 +56,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /scratch-ii2
 
 %test
-  #perl /RepeatMasker/RepeatMasker -h
+  perl /RepeatMasker/RepeatMasker -h
