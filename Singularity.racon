@@ -5,7 +5,7 @@ OSVersion: xenial
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %runscript
-    /racon/bin/racon "$@"
+    racon "$@"
 
 %post
     apt-get -y install wget
@@ -40,5 +40,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
      mkdir /clustertmp
 
 %test
-    /racon/bin/racon -h
+    racon -h
     
