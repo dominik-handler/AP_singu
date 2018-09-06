@@ -36,6 +36,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     ./configure 
     make
     sudo make install
+    sudo ldconfig
     
     mummerpath=/mummer-4.0.0beta2/
     export PATH=:$mummerpath:$PATH
