@@ -33,7 +33,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     wget https://github.com/mummer4/mummer/releases/download/v4.0.0beta2/mummer-4.0.0beta2.tar.gz
     tar -zxvf mummer-4.0.0beta2.tar.gz
     cd /mummer-4.0.0beta2/
-    ./configure 
+    ./configure LDFLAGS=-static
     make
     sudo make install
     sudo ldconfig
@@ -41,6 +41,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mummerpath=/mummer-4.0.0beta2/
     export PATH=:$mummerpath:$PATH
     nucmer -h
+    delta-filter -h
     
     sudo mkdir /groups
     sudo mkdir /scratch
