@@ -1,0 +1,48 @@
+#ngmlr in singularity
+
+BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%runscript
+     PATH="/Software/kentUtils/bin:$PATH"
+   "$@"
+
+%post
+    apt-get --assume-yes install wget
+    apt-get --assume-yes install sudo
+
+    sudo apt-get update
+    sudo apt-get --assume-yes install build-essential
+    sudo apt-get --assume-yes install zlib1g
+    sudo apt-get --assume-yes install libpng-dev
+    sudo apt-get --assume-yes install cmake
+    sudo apt-get update
+    sudo apt-get --assume-yes install git-core wget
+    sudo apt-get --assume-yes install zlib1g-dev uuid-dev
+    
+    apt-get update
+    sudo apt-get --assume-yes install mysql-client
+    
+    sudo apt-get --assume-yes install libssl-dev openssl
+    sudo apt-get --assume-yes install libmysqlclient-dev    
+    
+    mkdir -p /Software
+    cd /Software
+    #git clone git://github.com/ENCODE-DCC/kentUtils.git
+    wget http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v358.src.tgz
+    tar zxvf userApps.v358.src.tgz 
+    mv userApps kentUtils
+
+    cd kentUtils
+    make
+    
+    sudo mkdir /groups
+    sudo mkdir /clustertmp
+    sudo mkdir /scratch
+    sudo mkdir /scratch-ii2
+
+%environment
+
+%test
+    
