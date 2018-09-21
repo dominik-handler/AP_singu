@@ -8,7 +8,7 @@ From: ubuntu:14.04
 %post
 
   apt-get update
-  apt-get -y install wget git sudo curl libssl-dev libxml2-dev software-properties-common
+  apt-get -y install wget git sudo curl libssl-dev libxml2-dev software-properties-common libcurl4-openssl-dev
   add-apt-repository universe
   apt-get update
   apt-get -y install pandoc
