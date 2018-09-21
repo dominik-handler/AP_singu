@@ -1,6 +1,6 @@
 #R in singularity
 Bootstrap: docker
-From: ubuntu:16.04
+From: ubuntu:14.04
 
 %runscript
   "$@"
