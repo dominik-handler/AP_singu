@@ -44,9 +44,9 @@ From: ubuntu:14.04
   R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo", "gridExtra"), repos = "http://cran.wu.ac.at/") '
   R --slave -e 'options(unzip = "internal"); devtools::install_github("tidyverse/ggplot2") '
   R --slave -e 'install.packages(c( "cowplot" ), repos = "http://cran.wu.ac.at/") '
-  #R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.30.0")'
+  R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/sleuth@v0.30.0")'
   R --slave -e 'source("https://bioconductor.org/biocLite.R"); biocLite("rhdf5")'
-  R --slave -e 'options(unzip = "internal"); devtools::install_github("dominik-handler/sleuth", ref = "master")'
+  #R --slave -e 'options(unzip = "internal"); devtools::install_github("dominik-handler/sleuth", ref = "master")'
   R --slave -e 'source("https://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("COMBINE-lab/wasabi")'
 
   apt-get clean
