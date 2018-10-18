@@ -20,6 +20,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get -y install zlib1g-dev 
     apt-get -y install man-db    
     
+    #2018-10-18
     cd /
     git clone https://github.com/lh3/minimap2
     cd minimap2 && make
