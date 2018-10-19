@@ -35,9 +35,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mkdir /scratch
     mkdir /scratch-ii2
 
-%environment
-    PATH=/minimap2/minimap2/misc/:$PATH
-    export $PATH
 
 %test
     /minimap2/minimap2 -h
