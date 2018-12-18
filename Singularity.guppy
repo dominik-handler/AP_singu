@@ -12,9 +12,10 @@ From: ubuntu:16.04
     apt-get -y install sudo
 
     sudo apt-get update
-    sudo apt-get -y install wget
+    sudo apt-get -y install wget apt-transport-https
     wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
-    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | sudo tee     /etc/apt/sources.list.d/nanoporetech.sources.list
+    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
+      sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
     sudo apt-get update
     
     apt-get -y install ont-guppy
