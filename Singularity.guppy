@@ -22,13 +22,13 @@ From: ubuntu:16.04
     #apt-get -y install ont-guppy
 
     #v2.2.2    
+    sudo apt-get install gdebi-core
+
     mkdir /ONT
     cd /ONT
     wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
-    sudo dpkg -i /ONT/ont_guppy_2.2.2-1~xenial_amd64.deb
-    sudo apt-get install -f
+    sudo gdebi /ONT/ont_guppy_2.2.2-1~xenial_amd64.deb
 
-    rm -rf ont_guppy_2.2.2-1~xenial_amd64.deb
 
     mkdir /groups
     mkdir /clustertmp
