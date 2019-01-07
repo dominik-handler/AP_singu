@@ -37,6 +37,6 @@ From: ubuntu:16.04
     mkdir /scratch
     mkdir /scratch-ii2
 
-%test
+%test 
   #  guppy_basecaller -h
     
