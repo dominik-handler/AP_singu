@@ -13,22 +13,24 @@ From: ubuntu:16.04
 
     sudo apt-get update
     sudo apt-get -y install wget apt-transport-https
-    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
-    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
-    sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
-    sudo apt-get update
-    
-    #v2.1.3
-    #apt-get -y install ont-guppy
+    sudo apt-get install gdebi-core
+
+#    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
+#    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
+#    sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
+#    sudo apt-get update
+#    
+#    #v2.1.3
+#    #apt-get -y install ont-guppy
 
     #v2.2.2    
-    sudo apt-get install gdebi-core
 
     mkdir /ONT
     cd /ONT
     wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
     sudo gdebi /ONT/ont_guppy_2.2.2-1~xenial_amd64.deb
 
+    rm -rf ont_guppy_2.2.2-1~xenial_amd64.deb
 
     mkdir /groups
     mkdir /clustertmp
