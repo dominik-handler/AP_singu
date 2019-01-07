@@ -15,11 +15,17 @@ From: ubuntu:16.04
     sudo apt-get -y install wget apt-transport-https
     wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
     echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
-      sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
+    sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
     sudo apt-get update
     
     #v2.1.3
-    apt-get -y install ont-guppy
+    #apt-get -y install ont-guppy
+
+    #v2.2.2    
+    wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
+    sudo  apt install ./ont_guppy_2.2.2-1~xenial_amd64.deb
+
+    rm -rf ./ont_guppy_2.2.2-1~xenial_amd64.deb
 
     mkdir /groups
     mkdir /clustertmp
@@ -27,5 +33,5 @@ From: ubuntu:16.04
     mkdir /scratch-ii2
 
 %test
-    guppy_basecaller -h -h
+    guppy_basecaller -h
     
