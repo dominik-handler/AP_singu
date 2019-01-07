@@ -1,7 +1,7 @@
 #albacore in singularity
 
 Bootstrap: docker
-From: nvcr.io/nvidia/cuda:9.0-devel-ubuntu16.04
+From: ubuntu:16.04
 
 %runscript
     guppy_basecaller "$@"
