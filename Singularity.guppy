@@ -1,7 +1,7 @@
 #albacore in singularity
 
 Bootstrap: docker
-From: ubuntu:16.04
+From: nvcr.io/nvidia/cuda:9.0-devel-ubuntu16.04
 
 %runscript
     guppy_basecaller "$@"
@@ -13,7 +13,7 @@ From: ubuntu:16.04
 
     sudo apt-get update
     sudo apt-get -y install wget apt-transport-https
-    sudo apt-get install gdebi-core
+    sudo apt-get -y install gdebi-core
 
 #    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
 #    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
