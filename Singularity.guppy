@@ -22,9 +22,11 @@ From: ubuntu:16.04
     #apt-get -y install ont-guppy
 
     #v2.2.2    
-    sudo apt-get install gdebi
+    mkdir /ONT
+    cd /ONT
     wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
-    sudo gdebi ont_guppy_2.2.2-1~xenial_amd64.deb 
+    sudo dpkg -i /ONT/ont_guppy_2.2.2-1~xenial_amd64.deb
+    sudo apt-get install -f
 
     rm -rf ont_guppy_2.2.2-1~xenial_amd64.deb
 
