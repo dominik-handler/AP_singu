@@ -1,13 +1,13 @@
 #repeatmasker in singularity
 
-BootStrap: debootstrap
-OSVersion: xenial
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+Bootstrap: docker
+From: ubuntu:16.04
 
 %runscript
   perl /RepeatMasker/RepeatMasker "$@"
 
 %post
+    apt-get update
     apt-get --assume-yes install wget
 
      apt-get update

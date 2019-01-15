@@ -7,8 +7,8 @@ From: ubuntu:16.04
     guppy_basecaller "$@"
 
 %environment
-  #  export LD_LIBRARY_PATH=/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.46/lib:/software/171020/software/cuda/9.1.85/extras/CUPTI/lib64:/software/171020/software/cuda/9.1.85/lib64:/cm/local/apps/cuda-driver/libs/390.46/lib64:/cm/local/apps/cuda-driver/libs/390.46/lib:$LD_LIBRARY_PATH
-    export PATH=/cm/local/apps/cuda-driver/libs/390.46/bin:/software/171020/software/cuda/9.1.85:/software/171020/software/cuda/9.1.85/bin:$PATH
+  #  export LD_LIBRARY_PATH=/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:/software/171020/software/cuda/9.1.85/extras/CUPTI/lib64:/software/171020/software/cuda/9.1.85/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:$LD_LIBRARY_PATH
+    export PATH=/cm/local/apps/cuda-driver/libs/390.12/bin:/software/171020/software/cuda/9.1.85:/software/171020/software/cuda/9.1.85/bin:$PATH
 
 %post    
     apt-get update

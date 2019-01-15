@@ -1,21 +1,15 @@
 #porechop in singularity
 
-BootStrap: debootstrap
-OSVersion: xenial
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+Bootstrap: docker
+From: ubuntu:16.04
 
 %runscript
     porechop "$@"
 
 %post
-    apt-get -y install wget
-
     apt-get update
-    apt-get -y install build-essential
-    apt-get -y install python3.5
-    apt-get -y install git-core 
+    apt-get -y install wget build-essential python3.5 git-core python3-setuptools
 
-    apt-get -y install python3-setuptools
     easy_install3 pip
 
     git clone https://github.com/rrwick/Porechop.git

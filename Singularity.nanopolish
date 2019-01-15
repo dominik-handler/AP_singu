@@ -1,13 +1,13 @@
 #nanopolish in singularity
 
-BootStrap: debootstrap
-OSVersion: xenial
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+Bootstrap: docker
+From: ubuntu:16.04
 
 %runscript
     /nanopolish/nanopolish "$@"
 
 %post
+    apt-get update
     apt-get -y install wget
     apt-get -y install sudo
 

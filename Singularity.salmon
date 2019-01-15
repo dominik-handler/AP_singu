@@ -1,13 +1,13 @@
 #salmon in singularity
 
-BootStrap: debootstrap
-OSVersion: trusty
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+Bootstrap: docker
+From: ubuntu:14.04
 
 %runscript
     salmon "$@"
 
 %post
+    apt-get update
     apt-get -y install wget
     apt-get -y install sudo
 
