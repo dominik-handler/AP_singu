@@ -14,7 +14,7 @@ From: ubuntu:16.04
     apt-get update
     apt-get install bzip2
     apt-get -y install python3.5
-
+ 
     apt-get -y install python3-setuptools
     
     #update to version 1.19.0
