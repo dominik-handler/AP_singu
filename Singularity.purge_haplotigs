@@ -1,7 +1,7 @@
 #nanoplot in singularity
 
 Bootstrap: docker
-From: continuumio:anaconda3
+From: continuumio/anaconda3
 
 %runscript
     purge_haplotigs "$@"
