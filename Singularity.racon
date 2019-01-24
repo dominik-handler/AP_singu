@@ -24,7 +24,7 @@ From: ubuntu:16.04
     # apt-get -y install python-matplotlib      
      apt-get -y install git-core   
 
-    cd /
+    cd / 
     git clone --recursive https://github.com/isovic/racon.git racon
     cd racon
     mkdir build
