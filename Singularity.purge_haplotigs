@@ -46,8 +46,7 @@ From: ubuntu:16.04
 
 
 %test
-    export PATH="PATH=/Software/anaconda3/bin:${PATH}"
-    purge_haplotigs test
+   # export PATH="PATH=/Software/anaconda3/bin:${PATH}"
 
 
     
