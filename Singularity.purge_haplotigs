@@ -22,8 +22,6 @@ From: ubuntu:16.04
     wget https://github.com/lh3/minimap2/releases/download/v2.16/minimap2-2.16_x64-linux.tar.bz2
     tar xf minimap2-2.16_x64-linux.tar.bz2
     mkdir ~/bin
-    printf "export PATH=\$PATH:~/bin\n" > .bashrc
-    source .bashrc
     cp minimap2-2.16_x64-linux/minimap2 ~/bin/
 
     wget https://github.com/mummer4/mummer/releases/download/v4.0.0beta2/mummer-4.0.0beta2.tar.gz
