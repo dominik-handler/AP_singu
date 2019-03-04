@@ -20,6 +20,7 @@ From: ubuntu:16.04
     su - -c "R -e \"install.packages('ggplot2', repos='http://cran.rstudio.com/')\""
 
     mkdir -p /purge_haplotigs/bin
+    cd /purge_haplotigs
 
     wget https://github.com/lh3/minimap2/releases/download/v2.16/minimap2-2.16_x64-linux.tar.bz2
     tar xf minimap2-2.16_x64-linux.tar.bz2
@@ -31,12 +32,13 @@ From: ubuntu:16.04
     ./configure
     make
     cd ../
-    ln -s ~/mummer-4.0.0beta2/delta-filter /purge_haplotigs/bin/delta-filter
-    ln -s ~/mummer-4.0.0beta2/nucmer /purge_haplotigs/bin/nucmer
-    ln -s ~/mummer-4.0.0beta2/show-coords /purge_haplotigs/bin/show-coords
+    ln -s /purge_haplotigs/mummer-4.0.0beta2/delta-filter /purge_haplotigs/bin/delta-filter
+    ln -s /purge_haplotigs/mummer-4.0.0beta2/nucmer /purge_haplotigs/bin/nucmer
+    ln -s /purge_haplotigs/mummer-4.0.0beta2/show-coords /purge_haplotigs/bin/show-coords
 
+    
     git clone https://bitbucket.org/mroachawri/purge_haplotigs.git
-    ln -s ~/purge_haplotigs/bin/purge_haplotigs /purge_haplotigs/bin/purge_haplotigs
+    ln -s /purge_haplotigs/purge_haplotigs/bin/purge_haplotigs /purge_haplotigs/bin/purge_haplotigs
 
     mkdir /groups
     mkdir /scratch
