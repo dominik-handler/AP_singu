@@ -12,34 +12,37 @@ From: ubuntu:16.04
 
 %post    
     apt-get update
-    apt-get -y  install sudo wget apt-transport-https build-essential software-properties-common locales
+    apt-get -y  install sudo wget apt-transport-https build-essential software-properties-common locales lsb-release 
 
     locale-gen --purge en_US.UTF-8
     echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
-#    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub |  apt-key add -
-#    echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | 
-#    tee /etc/apt/sources.list.d/nanoporetech.sources.list
-#    apt-get update
-#    
-#    #v2.1.3
-#    apt-get -y install ont-guppy
+    
 
-    #v2.2.2    
+    sudo apt-get update 
+    export PLATFORM=$(lsb_release -cs) 
+    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add - 
+    echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list 
+    sudo apt-get update 
 
-    wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
+    #v2.3.5
+    apt-get -y install ont-guppy --
 
-    mkdir xTMP
+    # #v2.2.2    
 
-    dpkg-deb -x ont_guppy_2.2.2-1~xenial_amd64.deb xTMP
-    dpkg-deb --control ont_guppy_2.2.2-1~xenial_amd64.deb xTMP/DEBIAN
-    sed -i 's/nvidia-384/nvidia-390/g;s/libcuda1-384/libcuda1-390/g' xTMP/DEBIAN/control
-    dpkg -b xTMP guppy_hacked.deb
+    # wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
 
-    add-apt-repository -y ppa:graphics-drivers/ppa
-    apt update
+    # mkdir xTMP
 
-    apt-get -y install ./guppy_hacked.deb
+    # dpkg-deb -x ont_guppy_2.2.2-1~xenial_amd64.deb xTMP
+    # dpkg-deb --control ont_guppy_2.2.2-1~xenial_amd64.deb xTMP/DEBIAN
+    # sed -i 's/nvidia-384/nvidia-390/g;s/libcuda1-384/libcuda1-390/g' xTMP/DEBIAN/control
+    # dpkg -b xTMP guppy_hacked.deb
+
+    # add-apt-repository -y ppa:graphics-drivers/ppa
+    # apt update
+
+    # apt-get -y install ./guppy_hacked.deb
 
     #clean up
 
