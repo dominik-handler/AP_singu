@@ -26,7 +26,6 @@ From: ubuntu:16.04
 
     wget https://github.com/mummer4/mummer/releases/download/v4.0.0beta2/mummer-4.0.0beta2.tar.gz
     tar xf mummer-4.0.0beta2.tar.gz
-    compile
     cd mummer-4.0.0beta2
     ./configure
     make
@@ -47,7 +46,7 @@ From: ubuntu:16.04
     export PATH=$PATH:~/bin
 
 %test
-  purge_haplotigs test
+  #purge_haplotigs test
 
 
     
