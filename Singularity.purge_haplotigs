@@ -19,10 +19,11 @@ From: ubuntu:16.04
     apt -y  install r-base r-base-dev
     su - -c "R -e \"install.packages('ggplot2', repos='http://cran.rstudio.com/')\""
 
+    mkdir -p /purge_haplotigs/bin
+
     wget https://github.com/lh3/minimap2/releases/download/v2.16/minimap2-2.16_x64-linux.tar.bz2
     tar xf minimap2-2.16_x64-linux.tar.bz2
-    mkdir ~/bin
-    cp minimap2-2.16_x64-linux/minimap2 ~/bin/
+    cp minimap2-2.16_x64-linux/minimap2 /purge_haplotigs/bin/
 
     wget https://github.com/mummer4/mummer/releases/download/v4.0.0beta2/mummer-4.0.0beta2.tar.gz
     tar xf mummer-4.0.0beta2.tar.gz
@@ -30,23 +31,23 @@ From: ubuntu:16.04
     ./configure
     make
     cd ../
-    ln -s ~/mummer-4.0.0beta2/delta-filter ~/bin/delta-filter
-    ln -s ~/mummer-4.0.0beta2/nucmer ~/bin/nucmer
-    ln -s ~/mummer-4.0.0beta2/show-coords ~/bin/show-coords
+    ln -s ~/mummer-4.0.0beta2/delta-filter /purge_haplotigs/bin/delta-filter
+    ln -s ~/mummer-4.0.0beta2/nucmer /purge_haplotigs/bin/nucmer
+    ln -s ~/mummer-4.0.0beta2/show-coords /purge_haplotigs/bin/show-coords
 
     git clone https://bitbucket.org/mroachawri/purge_haplotigs.git
-    ln -s ~/purge_haplotigs/bin/purge_haplotigs ~/bin/purge_haplotigs
+    ln -s ~/purge_haplotigs/bin/purge_haplotigs /purge_haplotigs/bin/purge_haplotigs
 
     mkdir /groups
     mkdir /scratch
     mkdir /scratch-ii2
 
 %environment
-    export PATH="PATH=/Software/anaconda3/bin:${PATH}"
-    export PATH=$PATH:~/bin
+    export PATH=$PATH:/purge_haplotigs/bin
 
 %test
-  #purge_haplotigs test
+  export PATH=$PATH:/purge_haplotigs/bin
+  purge_haplotigs test
 
 
     
