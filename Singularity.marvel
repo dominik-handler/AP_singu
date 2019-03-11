@@ -30,7 +30,6 @@ From: ubuntu:16.04
 
     #mount directories
     mkdir /groups
-    mkdir /clustertmp
     mkdir /scratch
     mkdir /scratch-ii2
 

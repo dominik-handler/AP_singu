@@ -1,0 +1,20 @@
+#nanoplot in singularity
+
+Bootstrap: docker
+From: quay.io/biocontainers/quast:5.0.2--py35pl526ha92aebf_0
+
+%runscript
+
+%post
+
+    
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%environment
+
+%test
+    
+
+
