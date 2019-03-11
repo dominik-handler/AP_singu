@@ -4,6 +4,7 @@ Bootstrap: docker
 From: quay.io/biocontainers/quast:5.0.2--py35pl526ha92aebf_0
 
 %runscript
+    quast "$@"
 
 %post
 
