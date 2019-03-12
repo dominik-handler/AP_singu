@@ -26,12 +26,9 @@ From: ubuntu:latest
 	fi
 	mv /tmp/quast-5.0.2 /quast
 	cd /quast/
-	./install.sh
+	./setup.py install_full
 
-	./quast.py test_data/contigs_1.fasta \
-               test_data/contigs_2.fasta \
-               -r test_data/reference.fasta.gz \
-               -g test_data/genes.gff
+	
 
 %runscript
 	python3 /quast/quast.py $@
