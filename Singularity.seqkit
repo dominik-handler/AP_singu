@@ -9,7 +9,6 @@ From: continuumio/miniconda
 
 %post
   ##### System #####
-  apt update -y
 
   conda install -c bioconda seqkit
 
