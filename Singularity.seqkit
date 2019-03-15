@@ -1,7 +1,5 @@
 Bootstrap: docker
-From: continuumio/miniconda
-
-
+From: continuumio/miniconda3
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
