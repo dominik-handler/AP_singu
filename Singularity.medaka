@@ -8,9 +8,12 @@ From: continuumio/miniconda3
 %post
   ##### System #####
   export PATH=/opt/conda/bin:$PATH
+  export LANG=C.UTF-8 LC_ALL=C.UTF-8
+  
   conda config --add channels defaults
   conda config --add channels conda-forge
   conda config --add channels bioconda
+
   conda install medaka
 
 %runscript
