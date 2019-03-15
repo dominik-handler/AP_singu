@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: continuumio:miniconda
+
+
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  seqkit 10.1
+
+%post
+  ##### System #####
+  apt update -y
+  apt upgrade -y
+
+  conda install -c bioconda seqkit
+
+
+%runscript
+  seqkit $@
