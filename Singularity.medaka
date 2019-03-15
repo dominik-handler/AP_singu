@@ -8,7 +8,10 @@ From: continuumio/miniconda3
 %post
   ##### System #####
   export PATH=/opt/conda/bin:$PATH
-  conda install -c bioconda medaka
+  conda config --add channels defaults
+  conda config --add channels conda-forge
+  conda config --add channels bioconda
+  conda install medaka
 
 %runscript
   seqkit $@
