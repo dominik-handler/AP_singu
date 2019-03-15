@@ -5,14 +5,13 @@ From: continuumio/miniconda
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
-  seqkit 10.1
+  medaka v0.6.2
 
 %post
   ##### System #####
   apt update -y
 
-  conda install -c bioconda seqkit
-
+  conda install -c bioconda medaka
 
 %runscript
   seqkit $@
