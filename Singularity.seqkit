@@ -27,6 +27,9 @@ From: ubuntu:16.04
   conda config --add channels bioconda
   conda install -c bioconda seqkit
 
+%environment
+    PATH="PATH=/Software/anaconda3/bin:${PATH}"
+    export $PATH
 
 %runscript
   seqkit $@
