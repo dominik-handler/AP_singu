@@ -3,6 +3,10 @@
 Bootstrap: docker
 From: ubuntu:16.04
 
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  racon v1.3.3 (commit)
+
 %runscript
     racon "$@"
 
