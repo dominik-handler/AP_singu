@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: continuumio/miniconda3
+From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
@@ -33,4 +33,4 @@ From: continuumio/miniconda3
     export $PATH
 
 %runscript
-  seqkit $@
+  medaka $@
