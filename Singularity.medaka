@@ -40,8 +40,8 @@ apt-get clean && apt-get update && apt-get install -y \
 
   conda install medaka
 
-  pip uninstall tensorflow
-  pip install tensorflow-gpu==1.12.0
+  pip uninstall -y tensorflow
+  pip install -y tensorflow-gpu==1.12.0
 
 %environment
     PATH="PATH=/Software/anaconda3/bin:${PATH}"
