@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: tensorflow/tensorflow:1.12.0-gpu-py
+From: tensorflow/tensorflow:1.12.0-gpu-py3
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
@@ -41,7 +41,7 @@ apt-get clean && apt-get update && apt-get install -y \
   conda install medaka
 
   pip uninstall -y tensorflow
-  pip install tensorflow-gpu==1.12.0
+    pip install tensorflow-gpu==1.12.0
 
 %environment
     PATH="PATH=/Software/anaconda3/bin:${PATH}"
