@@ -22,7 +22,7 @@ From: ubuntu:16.04
 
   #install miniconda
     apt-get update
-    apt-get install bzip2 python3-setuptools python3.5 
+    apt-get -y install bzip2 python3-setuptools python3.5 
     
     #update to version 1.19.0
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
