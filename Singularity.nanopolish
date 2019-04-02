@@ -5,7 +5,7 @@ From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  Nanopolish v0.11.1 
+  Nanopolish v0.11.0
 
 %runscript
     /nanopolish/nanopolish "$@"
@@ -29,6 +29,7 @@ From: ubuntu:16.04
     cd /
     git clone --recursive https://github.com/jts/nanopolish.git
     cd nanopolish
+    git checkout v0.11.0
     make 
     mkdir /groups
     mkdir /clustertmp
