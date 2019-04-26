@@ -1,0 +1,34 @@
+#wtdbg2 in singularity
+
+Bootstrap: docker
+From: ubuntu:16.04
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  freebayes v1.2.0 @ 8a0dbee 
+
+%runscript
+    wtdbg2 "$@"
+
+%post
+    apt-get update
+    apt-get --assume-yes install wget curl apt-utils
+
+    apt-get update
+    apt-get -y install build-essential git-core zlib1g-dev
+       
+    cd /
+    git clone --recursive git://github.com/ekg/freebayes.git
+    cd freebayes && make 
+    make install
+
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%environment
+    PATH=/freebayes/bin:$PATH
+    export PATH
+
+%test
+    
