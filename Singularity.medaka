@@ -40,14 +40,10 @@ apt-get clean && apt-get update && apt-get install -y \
 
   conda install medaka
 
-  pip uninstall -y tensorflow
-    pip install tensorflow-gpu==1.12.0
 
 %environment
     PATH="PATH=/Software/anaconda3/bin:${PATH}"
     export $PATH
-    export LD_LIBRARY_PATH=/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:/software/171020/software/cuda/9.0.176/extras/CUPTI/lib64:/software/171020/software/cuda/9.0.176/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:$LD_LIBRARY_PATH
-    export PATH=/cm/local/apps/cuda-driver/libs/390.12/bin:/software/171020/software/cuda/9.0.176:/software/171020/software/cuda/9.0.176/bin:$PATH
 
 %runscript
   medaka $@
