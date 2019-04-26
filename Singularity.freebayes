@@ -15,7 +15,7 @@ From: ubuntu:16.04
     apt-get --assume-yes install wget curl apt-utils
 
     apt-get update
-    apt-get -y install build-essential git-core zlib1g-dev libbz2-dev
+    apt-get -y install build-essential git-core zlib1g-dev libbz2-dev liblzma-devel
        
     cd /
     git clone --recursive git://github.com/ekg/freebayes.git
