@@ -3,6 +3,11 @@
 Bootstrap: docker
 From: ubuntu:16.04
 
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
+  guppy v 3.0.3 
+
+
 %runscript
     guppy_basecaller "$@"
 
@@ -17,15 +22,13 @@ From: ubuntu:16.04
     locale-gen --purge en_US.UTF-8
     echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
-    
-
-    sudo apt-get update 
+    apt-get update 
     export PLATFORM=$(lsb_release -cs) 
     wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add - 
     echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list 
-    sudo apt-get update 
+    apt-get update 
 
-    #v2.3.5
+    #install guppy
     apt-get -y install ont-guppy 
 
     # #v2.2.2    
@@ -43,7 +46,6 @@ From: ubuntu:16.04
     # apt update
 
     # apt-get -y install ./guppy_hacked.deb
-
     #clean up
 
     #mount directories
