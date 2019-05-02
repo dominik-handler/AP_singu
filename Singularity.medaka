@@ -35,11 +35,10 @@ From: conda/miniconda3
 #     PATH="/Software/anaconda3/bin:$PATH"
     
   conda config --add channels defaults
-  conda config --add channels conda-forge
   conda config --add channels bioconda
+  conda config --add channels conda-forge
 
   conda install medaka
-
 
 %environment
     # PATH="PATH=/Software/anaconda3/bin:${PATH}"
