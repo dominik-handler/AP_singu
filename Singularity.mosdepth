@@ -11,7 +11,7 @@ From: ubuntu:16.04
 
 %post
     apt-get update
-    apt-get -y install wget
+    apt-get -y install wget git-all
     apt-get -y install sudo
 
 
@@ -55,6 +55,10 @@ From: ubuntu:16.04
   conda config --add channels bioconda
 
   conda install mosdepth
+
+    cd 
+    git clone https://github.com/brentp/mosdepth.git
+
 
     mkdir /groups
     mkdir /scratch
