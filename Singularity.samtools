@@ -11,15 +11,15 @@ From: ubuntu:16.04
     apt-get --assume-yes install wget tar
     apt-get --assume-yes install sudo
 
-    sudo apt-get update
-    sudo apt-get -y install build-essential
-    sudo apt-get -y install zlib1g
-    sudo apt-get -y install cmake
-    sudo apt-get -y install libncurses-dev libbz2-dev liblzma-dev
-    sudo apt-get update
+    apt-get update
+    apt-get -y install build-essential
+    apt-get -y install zlib1g
+    apt-get -y install cmake
+    apt-get -y install libncurses-dev libbz2-dev liblzma-dev
+    apt-get update
 
-    sudo apt-get -y install git-core   
-    sudo apt-get -y install zlib1g-dev     
+    apt-get -y install git-core   
+    apt-get -y install zlib1g-dev     
     
     mkdir -p /Software
     cd /Software/
@@ -31,10 +31,10 @@ From: ubuntu:16.04
     make
     make install  
       
-    sudo mkdir /groups
-    sudo mkdir /scratch
-    sudo mkdir /scratch-ii2
-    sudo mkdir /clustertmp
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+    mkdir /clustertmp
 
 %environment
     PATH="PATH=/Software/samtools/bin:${PATH}"

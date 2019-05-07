@@ -17,12 +17,7 @@ From: ubuntu:18.04
     apt-get update
     apt-get -y install build-essential git-core zlib1g-dev libbz2-dev liblzma-dev
        
-    cd /
-    wget https://github.com/arq5x/bedtools2/releases/download/v2.28.0/bedtools-2.28.0.tar.gz
-    tar -zxvf bedtools-2.28.0.tar.gz
-    cd bedtools2
-    make
-
+    apt-get -y install bedtools
 
     mkdir /groups
     mkdir /scratch
