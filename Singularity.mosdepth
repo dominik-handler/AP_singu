@@ -1,0 +1,22 @@
+#mosdepth in singularity
+
+Bootstrap: docker
+From: quay.io/biocontainers/mosdepth:0.2.4--he527e40_0
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  mosdepth v0.24.0  
+
+%runscript
+    mosdepth "$@"
+
+%post
+
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%environment
+
+%test
+    
