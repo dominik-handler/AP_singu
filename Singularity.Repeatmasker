@@ -1,60 +1,28 @@
-#repeatmasker in singularity
+#bedtools in singularity
 
 Bootstrap: docker
-From: ubuntu:16.04
+From: conda/miniconda3
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  repeatmasker v4.0.9_p2  
 
 %runscript
-  perl /RepeatMasker/RepeatMasker "$@"
+    "$@"
 
 %post
-    apt-get update
-    apt-get --assume-yes install wget
+  conda config --add channels defaults
+  conda config --add channels conda-forge
+  conda config --add channels bioconda
 
-     apt-get update
-     apt-get install make
-        
-     apt-get install build-essential software-properties-common -y
-     apt-get install gcc      
-    
-     apt-get --assume-yes install perl  
-    cpan install Text::Soundex  
-    apt-get clean && apt-get update && apt-get install -y locales
-    locale-gen "en_US.UTF-8"
-    #dpkg-reconfigure locales
+  conda install repeatmasker
 
 
-    wget http://eddylab.org/software/hmmer3/3.1b2/hmmer-3.1b2-linux-intel-x86_64.tar.gz
-    tar zxf hmmer-3.1b2-linux-intel-x86_64.tar.gz
-     mv hmmer-3.1b2-linux-intel-x86_64 /hmmer-3.1b2
-    cd /hmmer-3.1b2
-    ./configure
-    make
-    make check
-    PATH=/hmmer-3.1b2/src/:${PATH}
-    
-    rm -rf hmmer-3.1b2-linux-intel-x86_64.tar.gz
-    
-    mkdir /trf
-    cd /trf 
-    wget http://brenneckelab.imba.oeaw.ac.at/tmp/dominik_XA12B/trf409.linux64   
-    mv /trf/trf409.linux64 /trf/trf 
-    chmod 777 /trf/trf
-    PATH=/trf/:${PATH}
-    
-    mkdir /RepeatMasker
-    cd /    
-    wget http://www.repeatmasker.org/RepeatMasker-open-4-0-7.tar.gz
-    gunzip RepeatMasker-open-4-0-7.tar.gz    
-    tar xvf RepeatMasker-open-4-0-7.tar     
-    
-    cd RepeatMasker
-    wget https://raw.githubusercontent.com/dominik-handler/AP_singu/master/utilities/RepeatMaskerConfig.pm
-    #perl ./configure 
-    
-     mkdir /groups
-     mkdir /clustertmp
-     mkdir /scratch
-     mkdir /scratch-ii2
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%environment
 
 %test
-  perl /RepeatMasker/RepeatMasker -h
+    
