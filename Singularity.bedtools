@@ -1,7 +1,7 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: biocontainers/bedtools
+From: conda/miniconda3
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
@@ -11,13 +11,18 @@ From: biocontainers/bedtools
     bedtools "$@"
 
 %post
+  conda config --add channels defaults
+  conda config --add channels conda-forge
+  conda config --add channels bioconda
+
+  conda install bedtools
+
 
     mkdir /groups
     mkdir /scratch
     mkdir /scratch-ii2
 
 %environment
-
 
 %test
     
