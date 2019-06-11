@@ -1,7 +1,7 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: ubuntu:18.04
+From: biocontainers/bedtools
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
@@ -11,26 +11,13 @@ From: ubuntu:18.04
     bedtools "$@"
 
 %post
-    apt-get update
-    apt-get --assume-yes install wget curl apt-utils
-
-    apt-get update
-    apt-get -y install build-essential git-core zlib1g-dev libbz2-dev liblzma-dev 
-       
-    cd /
-    wget https://github.com/arq5x/bedtools2/releases/download/v2.28.0/bedtools-2.28.0.tar.gz
-    tar -zxvf bedtools-2.28.0.tar.gz
-    cd bedtools2
-    make
-
 
     mkdir /groups
     mkdir /scratch
     mkdir /scratch-ii2
 
 %environment
-    PATH="PATH=/Software/bedtools2/bin:${PATH}"
-    export $PATH
+
 
 %test
     
