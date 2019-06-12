@@ -4,7 +4,7 @@ Bootstrap: docker
 From: ubuntu:16.04
 
 %runscript
-     PATH="/Software/kentUtils/bin:$PATH"
+
    "$@"
 
 %post
@@ -43,6 +43,7 @@ From: ubuntu:16.04
     sudo mkdir /scratch-ii2
 
 %environment
-
+  export  PATH="/Software/kentUtils/bin:$PATH"
+  
 %test
     
