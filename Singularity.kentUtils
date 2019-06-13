@@ -8,8 +8,8 @@ From: ubuntu:16.04
    "$@"
 
 %post
-    sudo apt-get update
-    sudo apt-get --assume-yes install build-essential zlib1g libpng-dev cmake git-core wget zlib1g-dev uuid-dev
+    apt-get update
+    apt-get --assume-yes install build-essential zlib1g libpng-dev cmake git-core wget zlib1g-dev uuid-dev
 
     apt-get clean && apt-get update && apt-get install -y \
        locales \
@@ -23,7 +23,7 @@ From: ubuntu:16.04
 
     
     apt-get update
-    sudo apt-get --assume-yes install mysql-client libssl-dev openssl libmysqlclient-dev  
+    apt-get --assume-yes install mysql-client libssl-dev openssl libmysqlclient-dev  
     
     mkdir -p /Software
     cd /Software
@@ -35,10 +35,10 @@ From: ubuntu:16.04
     cd kentUtils
     make
     
-    sudo mkdir /groups
-    sudo mkdir /clustertmp
-    sudo mkdir /scratch
-    sudo mkdir /scratch-ii2
+    mkdir /groups
+    mkdir /clustertmp
+    mkdir /scratch
+    mkdir /scratch-ii2
 
 %environment
   export  PATH="/Software/kentUtils/bin:$PATH"
