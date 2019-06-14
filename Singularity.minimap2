@@ -28,5 +28,5 @@ From: ubuntu:16.04
     export PATH
 
 %test
-    /minimap2-2.17_x64-linux/minimap2 -h
+  #  /minimap2-2.17_x64-linux/minimap2 -h
     
