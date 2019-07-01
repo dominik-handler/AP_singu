@@ -1,0 +1,33 @@
+#bedtools in singularity
+
+Bootstrap: docker
+From: rust
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  yacrd from GIT 2019-07-01  
+
+%runscript
+    yacrd "$@"
+
+%post
+  apt-get install -y zlib1g libbz2-dev liblzma-dev cargo git
+
+  cd /
+  git clone https://github.com/natir/yacrd.git
+  cd yacrd
+  git checkout v0.5.1
+
+  cargo build
+  cargo test
+  cargo install
+
+
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+
+%environment
+
+%test
+    
