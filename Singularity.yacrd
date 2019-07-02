@@ -20,9 +20,10 @@ From: rust
   cd yacrd
   #git checkout v0.5.1
 
-  /usr/local/cargo/bin/cargo build
-  /usr/local/cargo/bin/cargo test
-  /usr/local/cargo/bin/cargo install
+  export PATH=/usr/local/cargo/bin/cargo:$PATH
+  cargo build
+  cargo test
+  cargo install
 
 
     mkdir /groups
@@ -30,6 +31,8 @@ From: rust
     mkdir /scratch-ii2
 
 %environment
+  #!/bin/bash
+  set -u
 
 %test
     
