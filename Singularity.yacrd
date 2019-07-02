@@ -1,7 +1,7 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: rustdocker/rust
+From: conda/miniconda3
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
@@ -11,26 +11,18 @@ From: rustdocker/rust
     yacrd "$@"
 
 %post
-  apt-get install -y zlib1g libbz2-dev liblzma-dev  git
+  conda config --add channels defaults
+  conda config --add channels conda-forge
+  conda config --add channels bioconda
 
-  cd /
-  git clone https://github.com/natir/yacrd.git
-  cd yacrd
-  #git checkout v0.5.1
-
-  #export PATH=/usr/local/cargo/bin/cargo:$PATH
-  cargo build
-  cargo test
-  cargo install
-
+  conda install yacrd
 
     mkdir /groups
     mkdir /scratch
     mkdir /scratch-ii2
 
 %environment
-  #!/bin/bash
-  set -u
+
 
 %test
     
