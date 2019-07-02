@@ -11,6 +11,8 @@ From: rust
     yacrd "$@"
 
 %post
+  #!/bin/bash
+  set -u
   apt-get install -y zlib1g libbz2-dev liblzma-dev  git
 
   cd /
@@ -18,9 +20,9 @@ From: rust
   cd yacrd
   #git checkout v0.5.1
 
-  cargo build
-  cargo test
-  cargo install
+  /usr/local/cargo/bin/cargo build
+  /usr/local/cargo/bin/cargo test
+  /usr/local/cargo/bin/cargo install
 
 
     mkdir /groups
