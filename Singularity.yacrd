@@ -1,7 +1,7 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: rustlang/rust
+From: rustdocker/rust
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
