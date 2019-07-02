@@ -1,7 +1,7 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: rust
+From: rustlang/rust
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
@@ -11,8 +11,6 @@ From: rust
     yacrd "$@"
 
 %post
-  #!/bin/bash
-  set -u
   apt-get install -y zlib1g libbz2-dev liblzma-dev  git
 
   cd /
@@ -20,7 +18,7 @@ From: rust
   cd yacrd
   #git checkout v0.5.1
 
-  export PATH=/usr/local/cargo/bin/cargo:$PATH
+  #export PATH=/usr/local/cargo/bin/cargo:$PATH
   cargo build
   cargo test
   cargo install
