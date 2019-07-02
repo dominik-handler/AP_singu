@@ -11,12 +11,12 @@ From: rust
     yacrd "$@"
 
 %post
-  apt-get install -y zlib1g libbz2-dev liblzma-dev cargo git
+  apt-get install -y zlib1g libbz2-dev liblzma-dev  git
 
   cd /
   git clone https://github.com/natir/yacrd.git
   cd yacrd
-  git checkout v0.5.1
+  #git checkout v0.5.1
 
   cargo build
   cargo test
