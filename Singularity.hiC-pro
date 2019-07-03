@@ -40,13 +40,15 @@ OSVersion: xenial
     # Let us save some space
     conda clean --packages -y
 
+    conda install -y python=2.7
+
     # external tools
     echo "Installing dependancies ... "
     conda install -y bowtie2
     conda install -y samtools
 
     # Python (>2.7) with *pysam (>=0.8.3)*, *bx(>=0.5.0)*, *numpy(>=1.8.2)*, and *scipy(>=0.15.1)* libraries
-    conda install -y python=2.7
+
     conda install -y -c anaconda scipy 
     conda install -y -c anaconda numpy 
     conda install -y -c bcbio bx-python 
