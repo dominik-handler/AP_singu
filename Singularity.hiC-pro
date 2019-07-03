@@ -30,7 +30,7 @@ OSVersion: xenial
 
     # set anaconda path
     export PATH=$PATH:/usr/local/anaconda/bin
-    conda update conda
+    #conda update conda
 
     conda config --add channels r
     conda config --add channels defaults
