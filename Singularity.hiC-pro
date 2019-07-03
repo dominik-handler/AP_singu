@@ -67,11 +67,14 @@ From: conda/miniconda2
     rm -rf /usr/local/anaconda/pkgs
 
 %test
-    INSTALLED_HICPRO_VERSION=$(find /usr/local/bin -name HiC-Pro | xargs dirname)
-    $INSTALLED_HICPRO_VERSION/HiC-Pro -h
+      INSTALLED_HICPRO_VERSION=$(find /usr/local/bin -name HiC-Pro | xargs dirname)
+      $INSTALLED_HICPRO_VERSION/HiC-Pro -h
 
 %environment
     export PATH=$PATH:/usr/local/anaconda/bin
     INSTALLED_VERSION=$(find /usr/local/bin -name HiC-Pro | xargs dirname)
     export PATH=$PATH:$INSTALLED_VERSION 
     export LANG=C
+
+%runscript
+  HiC-Pro "$@"
