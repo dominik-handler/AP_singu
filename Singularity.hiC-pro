@@ -31,6 +31,7 @@ OSVersion: xenial
     # set anaconda path
     export PATH=$PATH:/usr/local/anaconda/bin
     echo . /opt/conda/etc/profile.d/conda.sh >> ~/.bashrc
+    source ~/.bashrc
     #conda update conda
 
     conda config --add channels r
