@@ -66,6 +66,11 @@ From: conda/miniconda2
     conda clean --all -y
     rm -rf /usr/local/anaconda/pkgs
 
+    mkdir /groups
+    mkdir /scratch
+    mkdir /scratch-ii2
+    mkdir /schrach-cbe
+
 %test
       INSTALLED_HICPRO_VERSION=$(find /usr/local/bin -name HiC-Pro | xargs dirname)
       $INSTALLED_HICPRO_VERSION/HiC-Pro -h
