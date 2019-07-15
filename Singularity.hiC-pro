@@ -57,6 +57,8 @@ From: conda/miniconda2
     #VERSION="devel"
     #echo $VERSION".zip" | wget --base=http://github.com/nservant/HiC-Pro/archive/ -i - -O hicpro_latest.zip && unzip hicpro_latest.zip
     
+    export CLUSTER_SYS=SLURM
+    
     cd $(echo HiC-Pro-$VERSION)
     make configure
     make install
