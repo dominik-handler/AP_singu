@@ -5,54 +5,20 @@ From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  guppy v 3.0.3 
+  guppy v 3.1.5
 
 
 %runscript
     guppy_basecaller "$@"
 
-%environment
-    export LD_LIBRARY_PATH=/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:/software/171020/software/cuda/9.1.85/extras/CUPTI/lib64:/software/171020/software/cuda/9.1.85/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib64:/cm/local/apps/cuda-driver/libs/390.12/lib:$LD_LIBRARY_PATH
-    export PATH=/cm/local/apps/cuda-driver/libs/390.12/bin:/software/171020/software/cuda/9.1.85:/software/171020/software/cuda/9.1.85/bin:$PATH
-
-%post    
-    apt-get update
-    apt-get -y  install sudo wget apt-transport-https build-essential software-properties-common locales lsb-release 
-
-    locale-gen --purge en_US.UTF-8
-    echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
-
-    apt-get update 
-    export PLATFORM=$(lsb_release -cs) 
-    wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add - 
-    echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list 
-    apt-get update 
-
-    #install guppy
-    apt-get -y install ont-guppy 
-
-    # #v2.2.2    
-
-    # wget https://mirror.oxfordnanoportal.com/software/analysis/ont_guppy_2.2.2-1~xenial_amd64.deb
-
-    # mkdir xTMP
-
-    # dpkg-deb -x ont_guppy_2.2.2-1~xenial_amd64.deb xTMP
-    # dpkg-deb --control ont_guppy_2.2.2-1~xenial_amd64.deb xTMP/DEBIAN
-    # sed -i 's/nvidia-384/nvidia-390/g;s/libcuda1-384/libcuda1-390/g' xTMP/DEBIAN/control
-    # dpkg -b xTMP guppy_hacked.deb
-
-    # add-apt-repository -y ppa:graphics-drivers/ppa
-    # apt update
-
-    # apt-get -y install ./guppy_hacked.deb
-    #clean up
-
-    #mount directories
-    mkdir /groups
-    mkdir /clustertmp
-    mkdir /scratch
-    mkdir /scratch-ii2
+%post
+  apt-get update
+  apt-get install wget lsb-release
+  export PLATFORM=$(lsb_release -cs)
+  wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
+  echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
+  apt-get update
+  apt-get install ont-guppy --no-install-recommends
 
 %test 
   #  guppy_basecaller -h
