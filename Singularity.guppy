@@ -13,12 +13,12 @@ From: ubuntu:16.04
 
 %post
   apt-get update
-  apt-get install wget lsb-release
+  apt-get install -y wget lsb-release
   export PLATFORM=$(lsb_release -cs)
   wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
   echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
   apt-get update
-  apt-get install ont-guppy --no-install-recommends
+  apt-get install -y ont-guppy --no-install-recommends
 
 %test 
   #  guppy_basecaller -h
