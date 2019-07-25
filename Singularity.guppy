@@ -13,7 +13,7 @@ From: ubuntu:16.04
 
 %post
   apt-get update
-  apt-get install -y wget lsb-release
+  apt-get install -y wget lsb-release apt-transport-https
   export PLATFORM=$(lsb_release -cs)
   wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub |  apt-key add -
   echo "deb http://mirror.oxfordnanoportal.com/apt ${PLATFORM}-stable non-free" |  tee /etc/apt/sources.list.d/nanoporetech.sources.list
@@ -22,7 +22,7 @@ From: ubuntu:16.04
 
   apt-get autoremove
   apt-get clean
-  
+
 %test 
   #  guppy_basecaller -h
     
