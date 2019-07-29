@@ -3,6 +3,10 @@
 Bootstrap: docker
 From: ubuntu:16.04
 
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
+  marvel 2019-07-29
+
 %runscript
     "$@"
 
