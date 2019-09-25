@@ -96,8 +96,8 @@ From: ubuntu:16.04
   
   #install bowtie v1.2.3
     cd /install
-    wget https://sourceforge.net/projects/bowtie-bio/files/bowtie/1.2.3/bowtie-1.2.3-linux-x86_64.zip/download
-    unzip bowtie-1.2.3-linux-x86_64.zip
+    wget -O bowtie.zip https://sourceforge.net/projects/bowtie-bio/files/bowtie/1.2.3/bowtie-1.2.3-linux-x86_64.zip/download
+    unzip bowtie.zip
     cp bowtie-1.2.3-linux-x86_64/bowtie* /usr/local/bin/
 
   #install STAR
