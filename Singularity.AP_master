@@ -126,7 +126,7 @@ From: ubuntu:16.04
     make install
     
   #install R
-    apt-get -y build-dep r-base libpng-dev
+    apt-get -y build-dep r-base  libpng-dev
 
     mkdir /install/R
     cd /install/R
