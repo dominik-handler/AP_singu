@@ -121,7 +121,9 @@ From: ubuntu:16.04
     wget  https://github.com/COMBINE-lab/salmon/archive/v0.10.2.tar.gz
     tar zxf v0.10.2.tar.gz
     cd salmon-0.10.2 
-    cmake
+    mkdir build
+    cd build
+    cmake ..
     make
     make install
     
