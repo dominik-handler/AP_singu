@@ -118,8 +118,9 @@ From: ubuntu:16.04
     
   #salmon
     cd /install
-    wget --quiet  https://github.com/COMBINE-lab/salmon/archive/v0.10.2.tar.gz
-    tar zxvf v0.10.2
+    wget  https://github.com/COMBINE-lab/salmon/archive/v0.10.2.tar.gz
+    ls -lh
+    tar zxf v0.10.2
     cd salmon-0.10.2 
     cmake
     make
