@@ -110,17 +110,16 @@ From: ubuntu:16.04
     apt-get --assume-yes install mysql-client libssl-dev openssl libmysqlclient-dev  
   
     cd /install
-    wget --quiet  http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v387.src.tgz
-    #@ tar zxvf userApps.v387.src.tgz 
-    #@ cd userApps
-    #@ make
-    #@ mv bin/* /usr/local/bin/
+    wget --quiet  http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v388.src.tgz
+    tar zxf userApps.v388.src.tgz 
+    cd userApps
+    make
+    mv bin/* /usr/local/bin/
     
   #salmon
     cd /install
     wget  https://github.com/COMBINE-lab/salmon/archive/v0.10.2.tar.gz
-    ls -lh
-    tar zxf v0.10.2
+    tar zxf v0.10.2.tar.gz
     cd salmon-0.10.2 
     cmake
     make
@@ -160,7 +159,7 @@ From: ubuntu:16.04
   #clean up and make container smaller
     apt-get update
     apt-get -y remove --auto-remove build-essential make gcc 
-    #@ rm -rf /install
+    rm -rf /install
   
 %environment
   #!/bin/bash
