@@ -22,7 +22,7 @@ From: ubuntu:16.04
 
   #install samtools
     apt-get update
-    apt-get --assume-yes install gcc make libbz2-dev zlib1g-dev libncurses5-dev libncursesw5-dev liblzma-dev tar libpng-dev
+    apt-get --assume-yes install gcc make libbz2-dev zlib1g-dev libncurses5-dev libncursesw5-dev liblzma-dev tar libpng-dev uuid-dev
 
     cd /install
     wget --quiet  https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2
