@@ -123,7 +123,7 @@ From: ubuntu:16.04
     cd salmon-0.10.2 
     mkdir build
     cd build
-    cmake ..
+    cmake -DFETCH_BOOST=TRUE -DCMAKE_INSTALL_PREFIX=/usr/local/bin/ ..
     make
     make install
     
