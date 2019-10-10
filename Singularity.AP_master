@@ -114,8 +114,8 @@ From: ubuntu:16.04
     tar zxvf userApps.v387.src.tgz 
     cd userApps
     make
-    make install
-
+    mv bin/* /usr/local/bin/
+    
   #salmon
     cd /install
     wget --quiet  https://github.com/COMBINE-lab/salmon/archive/v0.10.2.tar.gz
