@@ -128,8 +128,9 @@ From: ubuntu:16.04
     make install
     
   #install R
-    apt-get update
-    apt-get -y build-dep r-base  
+    #@ apt-get update
+    #@ apt-key adv –keyserver keyserver.ubuntu.com –recv-keys E084DAB9
+    #@ apt-get -y build-dep r-base  
 
     mkdir /install/R
     cd /install/R
@@ -160,6 +161,7 @@ From: ubuntu:16.04
     cp homer/bin/* /usr/local/bin/
 
   #clean up and make container smaller
+    echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | tee -a /etc/apt/sources.list
     apt-get update
     apt-get -y remove --auto-remove build-essential make gcc 
     rm -rf /install
