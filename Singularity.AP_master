@@ -166,8 +166,6 @@ From: ubuntu:16.04
     cp /install/homer/bin/* /usr/local/bin/
 
   #clean up and make container smaller
-    apt-get update
-    apt-get -y remove --auto-remove build-essential make gcc 
     rm -rf /install
   
 %environment
