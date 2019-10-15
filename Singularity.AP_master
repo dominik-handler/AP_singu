@@ -3,7 +3,7 @@ From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  gnu-parallel v0.6.4 + other tools required within parallel 
+  all tools required for the AnnotationPipeline
 
 %post    
   apt-get update
@@ -123,48 +123,49 @@ From: ubuntu:16.04
     cd salmon-0.10.2 
     mkdir build
     cd build
-    cmake -DFETCH_BOOST=TRUE -DCMAKE_INSTALL_PREFIX=/usr/local/bin/ ..
+    cmake -DFETCH_BOOST=TRUE -DCMAKE_INSTALL_PREFIX=/usr/local/ ..
     make
     make install
     
   #install R
-    apt-get --assume-yes install apt-transport-https
-    echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list
-    gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-    gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | apt-key add -
+    #@ apt-get --assume-yes install apt-transport-https
+    #@ echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list
+    #@ gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+    #@ gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | apt-key add -
     apt-get update
-    apt-get --assume-yes install pandoc libgit2-dev libssl-dev libcurl4-gnutls-dev libxml2-dev r-base-dev
+    apt-get --assume-yes install pandoc libgit2-dev libssl-dev libcurl4-gnutls-dev libxml2-dev xorg-dev libopenblas-dev libcairo2-dev libxt-dev libtiff5-dev openjdk-8-jdk libreadline6-dev
 
-    #@ mkdir -p /install/R
-    #@ cd /install/R
-    #@ version="3.5.0"
-    #@ wget --quiet  http://cran.at.r-project.org/src/base/R-3/R-$version.tar.gz
-    #@ tar -xzf R-$version.tar.gz  
-    #@ cd /R/R-$version
-    #@ ./configure 
-    #@ make
-    #@ make install
+    mkdir -p /install/R
+    cd /install/R
+    version="3.5.3"
+    wget --quiet  http://cran.at.r-project.org/src/base/R-3/R-$version.tar.gz
+    tar -xzf R-$version.tar.gz  
+    cd R-$version
+    ./configure --with-blas=-lopenblas --enable-R-shlib --with-lapack --enable-threads --with-libtiff --with-cairo=yes --with-libpng=yes 
+
+    make
+    make install
 
     #install R-packages  
-    R --slave -e 'install.packages(c( "devtools")) '
-    R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo", "gridExtra") ") '
+    R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
+    R --slave -e 'install.packages(c( "tidyverse", "plotly", "Cairo", "gridExtra"), repos = "http://cran.wu.ac.at/") '
     R --slave -e 'options(unzip = "internal"); devtools::install_github("tidyverse/ggplot2") '
-    R --slave -e 'install.packages(c( "cowplot" )) '
-    R --slave -e 'source("http://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("pachterlab/  sleuth@v0.30.0")'
-    R --slave -e 'source("https://bioconductor.org/biocLite.R"); biocLite("rhdf5")'
-    #R --slave -e 'options(unzip = "internal"); devtools::install_github("dominik-handler/sleuth", ref = "master")  '
-    R --slave -e 'source("https://bioconductor.org/biocLite.R"); biocLite("remotes"); biocLite("COMBINE-lab/  wasabi")'
+    R --slave -e 'install.packages(c( "cowplot" ), repos = "http://cran.wu.ac.at/") '
+    R --slave -e 'install.packages(c( "BiocManager" ), repos = "http://cran.wu.ac.at/") '
+    R --slave -e 'library(BiocManager); BiocManager::install("remotes"); BiocManager::install("pachterlab/sleuth@v0.30.0")'
+    R --slave -e 'library(BiocManager); BiocManager::install("rhdf5")'
+    R --slave -e 'library(BiocManager); BiocManager::install("COMBINE-lab/wasabi")'
 
 
     #install homer
     apt-get -y install perl
-    cd /install
+    mkdir -p /install/homer/
+    cd /install/homer
     wget --quiet  http://homer.ucsd.edu/homer/configureHomer.pl
-    perl /homer/configureHomer.pl -install
-    cp homer/bin/* /usr/local/bin/
+    perl /install/configureHomer.pl -install
+    cp /install/homer/bin/* /usr/local/bin/
 
   #clean up and make container smaller
-    echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | tee -a /etc/apt/sources.list
     apt-get update
     apt-get -y remove --auto-remove build-essential make gcc 
     rm -rf /install
