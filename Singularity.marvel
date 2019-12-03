@@ -15,7 +15,6 @@ From: ubuntu:18.04
     export LANG=en_US.UTF-8  
     export LANGUAGE=en_US:en  
     export LC_ALL=C
-    export PATH=/homer/bin:$PATH
 
     export PYTHONPATH=/MARVEL/install/lib.python:$PYTHONPATH
     export PATH=/MARVEL/install/bin:$PATH
@@ -54,6 +53,7 @@ From: ubuntu:18.04
     git clone https://github.com/rrwick/Filtlong.git
     cd Filtlong
     make -j 2    
+    cp bin/filtlong /usr/bin/
 
     #install mawk v1.3.4
     cd /
