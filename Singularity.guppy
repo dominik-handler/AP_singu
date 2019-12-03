@@ -5,7 +5,7 @@ From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  guppy v 3.1.5
+  guppy v 3.4.1
 
 
 %runscript
