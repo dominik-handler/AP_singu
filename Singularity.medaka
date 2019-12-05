@@ -3,7 +3,7 @@ From: ubuntu:16.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  medaka v0.7.0 
+  medaka v0.11.0 
 
 %post
     apt-get update
