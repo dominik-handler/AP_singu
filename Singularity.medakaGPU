@@ -3,7 +3,7 @@ From: tensorflow/tensorflow:1.12.0-gpu-py3
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at  
-  medaka v0.6.2 
+  medaka v0.11.0 
 
 %post
     apt-get update
