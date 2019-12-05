@@ -1,31 +1,24 @@
 #minimap2 in singularity
 
 Bootstrap: docker
-From: ubuntu:16.04
+From: ubuntu:18.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
-  minimap2 v2.17
+  minimap2 @ 081df6a
 
 %runscript
-    /minimap2-2.17_x64-linux/minimap2 "$@"
+    "$@"
 
 %post
     apt-get update
-    apt-get --assume-yes install wget curl bzip2
+    apt-get --assume-yes install wget curl bzip2 git-core build-essential zlib1g-dev
 
-    cd /
-    curl -L https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 | tar -jxvf - 
-    
-    mkdir /groups
-    mkdir /clustertmp
-    mkdir /scratch
-    mkdir /scratch-ii2
+    git clone https://github.com/lh3/minimap2
+    cd minimap2 && make
+    cp minimap2 /usr/bin 
 
 %environment
-    PATH=/minimap2/minimap2/misc/:$PATH
-    export PATH
 
 %test
-    /minimap2-2.17_x64-linux/minimap2 -h
     
