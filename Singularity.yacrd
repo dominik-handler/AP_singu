@@ -17,10 +17,6 @@ From: conda/miniconda3
 
   conda install yacrd
 
-    mkdir /groups
-    mkdir /scratch
-    mkdir /scratch-ii2
-
 %environment
 
 
