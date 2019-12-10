@@ -12,7 +12,7 @@ From: ubuntu:16.04
 
 %post
     apt-get update
-    apt-get --assume-yes install wget curl bzip2 git-core build-essential zlib1g-dev python3.6
+    apt-get --assume-yes install wget curl bzip2 git-core build-essential zlib1g-dev python3.5
 
     git clone https://github.com/lh3/minimap2
     cd minimap2 && make
