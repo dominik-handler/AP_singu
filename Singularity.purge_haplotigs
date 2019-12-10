@@ -1,7 +1,9 @@
-#nanoplot in singularity
-
 Bootstrap: docker
 From: ubuntu:16.04
+
+%labels
+  maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
+  purge_haplotigs 2019-12-10  
 
 %runscript
     purge_haplotigs "$@"
