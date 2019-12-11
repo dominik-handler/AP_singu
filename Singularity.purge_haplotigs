@@ -63,7 +63,7 @@ From: ubuntu:16.04
     cd /
     wget https://github.com/lh3/minimap2/releases/download/v2.16/minimap2-2.16_x64-linux.tar.bz2
     tar xf minimap2-2.16_x64-linux.tar.bz2
-    cp minimap2-2.16_x64-linux/minimap2 /purge_haplotigs/bin/
+    cp minimap2-2.16_x64-linux/minimap2 /usr/bin
 
     wget https://github.com/mummer4/mummer/releases/download/v4.0.0beta2/mummer-4.0.0beta2.tar.gz
     tar xf mummer-4.0.0beta2.tar.gz
@@ -82,7 +82,6 @@ From: ubuntu:16.04
 
     git clone https://bitbucket.org/mroachawri/purge_haplotigs.git
     cp /purge_haplotigs/bin/purge_haplotigs /usr/bin
-    ln -s /purge_haplotigs/bin/purge_haplotigs /purge_haplotigs/bin/purge_haplotigs
 
 %environment
 
