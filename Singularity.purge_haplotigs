@@ -71,7 +71,9 @@ From: ubuntu:16.04
     ./configure
     make
     cd ../
-    cp /mummer-4.0.0beta2/* /usr/bin/
+    cp /mummer-4.0.0beta2/delta-filter /usr/bin/
+    cp /mummer-4.0.0beta2/nucmer /usr/bin/
+    cp /mummer-4.0.0beta2/show-coords /usr/bin/
     #@ ln -s /purge_haplotigs/mummer-4.0.0beta2/delta-filter /purge_haplotigs/bin/delta-filter
     #@ ln -s /purge_haplotigs/mummer-4.0.0beta2/nucmer /purge_haplotigs/bin/nucmer
     #@ ln -s /purge_haplotigs/mummer-4.0.0beta2/show-coords /purge_haplotigs/bin/show-coords
