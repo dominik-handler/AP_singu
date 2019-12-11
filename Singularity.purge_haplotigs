@@ -20,7 +20,7 @@ From: ubuntu:16.04
     export LC_ALL=C
 
     #install commonly required tools
-    apt-get -y  install sudo wget apt-transport-https build-essential software-properties-common lsb-release git python3-dev
+    apt-get -y  install sudo wget apt-transport-https build-essential software-properties-common lsb-release git python-dev
   
     #install samtools  
     apt-get --assume-yes install gcc make libbz2-dev zlib1g-dev libncurses5-dev libncursesw5-dev liblzma-dev tar libpng-dev uuid-dev
