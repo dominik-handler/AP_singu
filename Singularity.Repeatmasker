@@ -16,11 +16,10 @@ From: ubuntu:18.04
   export RMB_VERSION=2.9.0
   export TRF_VERSION=409
   export DFAM_VERSION=3.1
-  export REPBASE_VER=${REPBASE_VER:-20181026}
  
   #install base-dependencies
   apt-get update
-  apt-get install -y --no-install-recommends wget tar libgomp1 unzip build-essential openssh-client locale
+  apt-get install -y --no-install-recommends wget tar libgomp1 unzip build-essential openssh-client locales
 
   mkdir /install-dir
 
@@ -47,39 +46,42 @@ From: ubuntu:18.04
 
   #install trf
   cd /install-dir
-  wget http://tandem.bu.edu/trf/downloads/trf${TRF_VERSION}.linux64 
+  wget -nv http://tandem.bu.edu/trf/downloads/trf${TRF_VERSION}.linux64 
   mv trf${TRF_VERSION}.linux64 /usr/bin/trf
   chmod +x /usr/bin/trf
 
   #install hmmer
   cd /install-dir
-  wget http://eddylab.org/software/hmmer/hmmer-3.2.1.tar.gz
+  wget -nv http://eddylab.org/software/hmmer/hmmer-3.2.1.tar.gz
   tar zxf hmmer-3.2.1.tar.gz
   cd hmmer-3.2.1
   ./configure --prefix /usr/local/
   make
   make check
   make install
-  % (cd easel; make install)
+  
+  # install easel
+  cd easel
+  make install
 
 
   #install repeatmasker
   cd /usr/local
-  wget http://www.repeatmasker.org/RepeatMasker-${RM_VERSION}.tar.gz
+  wget -nv http://www.repeatmasker.org/RepeatMasker-${RM_VERSION}.tar.gz
   tar xvf RepeatMasker-${RM_VERSION}.tar.gz
   rm -rf RepeatMasker-${RM_VERSION}.tar.gz
   ln -s /usr/local/RepeatMasker/RepeatMasker /usr/bin/RepeatMasker
   chmod a+x /usr/bin/RepeatMasker
 
   cd /usr/local/RepeatMasker/Libraries
-  wget --no-check-certificate https://www.dfam.org/releases/Dfam_${DFAM_VERSION}/families/Dfam.hmm.gz
+  wget -nv --no-check-certificate https://www.dfam.org/releases/Dfam_${DFAM_VERSION}/families/Dfam.hmm.gz
   gunzip -f Dfam.hmm.gz
 
   cd /usr/local/RepeatMasker
   perl ./configure -trf_prgm /usr/bin/trf -hmmer_dir /usr/local/bin/ -rmblast_dir /usr/local/rmblast-${RMB_VERSION}/ -default_search_engine=hmmer -libdir=/usr/local/RepeatMasker/Libraries/
 
   cd /install-dir/
-  wget --no-check-certificate https://github.com/tpall/repeatmasker-singularity/raw//master/test/seqs/small-1.fa
+  wget -nv --no-check-certificate https://github.com/tpall/repeatmasker-singularity/raw//master/test/seqs/small-1.fa
   RepeatMasker //small-1.fa
 
 %test
