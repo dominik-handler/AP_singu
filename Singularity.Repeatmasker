@@ -1,28 +1,90 @@
 #bedtools in singularity
 
 Bootstrap: docker
-From: conda/miniconda3
+From: ubuntu:18.04
 
 %labels
   maintainer Dominik Handler <Dominik Handler@imba.oeaw.ac.at>
-  repeatmasker v4.0.9_p2  
+  repeatmasker v4.1.0  
 
 %runscript
     "$@"
 
 %post
-  conda config --add channels defaults
-  conda config --add channels conda-forge
-  conda config --add channels bioconda
+  # Software versions
+  export RM_VERSION=4.1.0
+  export RMB_VERSION=2.9.0
+  export TRF_VERSION=409
+  export DFAM_VERSION=3.1
+  export REPBASE_VER=${REPBASE_VER:-20181026}
+ 
+  #install base-dependencies
+  apt-get update
+  apt-get install -y --no-install-recommends wget tar libgomp1 unzip build-essential openssh-client locale
 
-  conda install repeatmasker
+  mkdir /install-dir
+
+  locale-gen en_US.UTF-8
+  export LANG=en_US.UTF-8  
+  export LANGUAGE=en_US:en  
+  export LC_ALL=en_US.UTF-8  
+
+  # Configure term
+  export TERM=xterm
+
+  # Install cpanm
+  wget -O - http://cpanmin.us | perl - --self-upgrade
+  
+  # Install the Text::Soundex module via cpan:
+  cpanm Text::Soundex
+
+  #install rmblast
+  cd /install-dir
+  wget -nv http://www.repeatmasker.org/rmblast-${RMB_VERSION}+-x64-linux.tar.gz
+  cd /usr/local/
+  tar zxf /install-dir/rmblast-${RMB_VERSION}+-x64-linux.tar.gz
+  rm -rf /install-dir/rmblast-${RMB_VERSION}+-x64-linux.tar.gz
+
+  #install trf
+  cd /install-dir
+  wget http://tandem.bu.edu/trf/downloads/trf${TRF_VERSION}.linux64 
+  mv trf${TRF_VERSION}.linux64 /usr/bin/trf
+  chmod +x /usr/bin/trf
+
+  #install hmmer
+  cd /install-dir
+  wget http://eddylab.org/software/hmmer/hmmer-3.2.1.tar.gz
+  tar zxf hmmer-3.2.1.tar.gz
+  cd hmmer-3.2.1
+  ./configure --prefix /usr/local/
+  make
+  make check
+  make install
+  % (cd easel; make install)
 
 
-    mkdir /groups
-    mkdir /scratch
-    mkdir /scratch-ii2
+  #install repeatmasker
+  cd /usr/local
+  wget http://www.repeatmasker.org/RepeatMasker-${RM_VERSION}.tar.gz
+  tar xvf RepeatMasker-${RM_VERSION}.tar.gz
+  rm -rf RepeatMasker-${RM_VERSION}.tar.gz
+  ln -s /usr/local/RepeatMasker/RepeatMasker /usr/bin/RepeatMasker
+  chmod a+x /usr/bin/RepeatMasker
 
-%environment
+  cd /usr/local/RepeatMasker/Libraries
+  wget --no-check-certificate https://www.dfam.org/releases/Dfam_${DFAM_VERSION}/families/Dfam.hmm.gz
+  gunzip -f Dfam.hmm.gz
+
+  cd /usr/local/RepeatMasker
+  perl ./configure -trf_prgm /usr/bin/trf -hmmer_dir /usr/local/bin/ -rmblast_dir /usr/local/rmblast-${RMB_VERSION}/ -default_search_engine=hmmer -libdir=/usr/local/RepeatMasker/Libraries/
+
+  cd /install-dir/
+  wget --no-check-certificate https://github.com/tpall/repeatmasker-singularity/raw//master/test/seqs/small-1.fa
+  RepeatMasker //small-1.fa
 
 %test
     
+
+
+
+
