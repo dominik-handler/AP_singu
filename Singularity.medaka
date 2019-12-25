@@ -23,18 +23,10 @@ From: conda/miniconda3
     sed -i 's/tar -xvf minimap2-${MINIMAPVER}_x64-linux.tar.bz2/tar -xvf minimap2-${MINIMAPVER}_x64-linux.tar.bz2 --no-same-owner /' Makefile
     make install
 
-    #@ export PATH=/usr/local/bin/:${PATH}
-    #@ conda init bash
-
-    #@ conda install -c conda-forge -c bioconda medaka
 
 %environment
-    #@ PATH="PATH=/Software/anaconda3/bin:${PATH}"
-    #@ export $PATH
-    #@ bash
+    export PATH=/medaka/venv/bin/:${PATH}
     
 
 %runscript
-  #@ bash
-  #@ conda activate medaka
   "$@"
