@@ -29,9 +29,9 @@ From: pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
     git pull origin master
     ./build.sh
 
-    mkdir /opt/helen/build
-    cd /opt/helen/build
-    cmake .. -Wno-deprecated && make
+    #@ mkdir /opt/helen/build
+    #@ cd /opt/helen/build
+    #@ cmake .. -Wno-deprecated && make
 
     python3 -m pip install h5py tqdm numpy pyyaml
     #python3 -m pip install https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
