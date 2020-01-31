@@ -27,6 +27,7 @@ From: pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
     git fetch && \
     git submodule update --init && \
     git pull origin master
+    ./build.sh
 
     mkdir /opt/helen/build
     cd /opt/helen/build
@@ -35,6 +36,7 @@ From: pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
     python3 -m pip install h5py tqdm numpy pyyaml
     #python3 -m pip install https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
     #python3 -m pip install https://download.pytorch.org/whl/cpu/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
+
 
     #cd /opt/helen
     #cp helen_wrapper.sh /opt/helen_wrapper.sh
