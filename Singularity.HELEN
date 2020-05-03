@@ -44,7 +44,7 @@ From: ubuntu:18.04
     #cp helen_wrapper.sh /opt/helen_wrapper.sh
 
 %environment
-    /helen/venv/bin/activate
+    . /helen/venv/bin/activate
 
 %runscript
     $@
