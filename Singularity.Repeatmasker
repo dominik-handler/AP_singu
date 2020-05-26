@@ -76,17 +76,15 @@ From: ubuntu:18.04
     chmod a+x /usr/bin/RepeatMasker
 
     #add repbase library
-    cd /usr/local/RepeatMasker/Libraries/
+    cd /usr/local/RepeatMasker/
     wget https://brenneckelab.imba.oeaw.ac.at/tmp/RepBaseRepeatMaskerEdition-20181026.tar    
     tar xvf RepBaseRepeatMaskerEdition-20181026.tar
     rm RepBaseRepeatMaskerEdition-20181026.tar
-    mv Libraries/* /usr/local/RepeatMasker/Libraries/
-    rm -rf Libraries
 
     #add Dfam library
-    cd /usr/local/RepeatMasker/Libraries
-    wget -nv --no-check-certificate https://www.dfam.org/releases/Dfam_${DFAM_VERSION}/families/Dfam.hmm.gz
-    gunzip -f Dfam.hmm.gz
+    #cd /usr/local/RepeatMasker/Libraries
+    #wget -nv --no-check-certificate https://www.dfam.org/releases/Dfam_${DFAM_VERSION}/families/Dfam.hmm.gz
+    #gunzip -f Dfam.hmm.gz
 
     #configure RepeatMasker
     cd /usr/local/RepeatMasker
