@@ -38,7 +38,7 @@ From: ubuntu:18.04
     #install R-packages  
     R --slave -e 'install.packages(c( "devtools"), repos = "http://cran.wu.ac.at/") '
     R --slave -e 'install.packages(c( "tidyverse"), repos = "http://cran.wu.ac.at/") '
-    R --slave -e 'options(unzip = "internal"); devtools::install_github("adnaniazi/tailfindr", ref="gregor_polya_base_end) '
+    R --slave -e 'options(unzip = "internal"); devtools::install_github("adnaniazi/tailfindr", ref="gregor_polya_base_end") '
 
   #clean up and make container smaller
     rm -rf /install
